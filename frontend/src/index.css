@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+@theme {
+    --color-midnight:#1E2430;
+  }
