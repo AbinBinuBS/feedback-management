@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import feedbackRouter from './routes/feedbackRouter.js'
 import DbConnect from './config/db.js'
+import loggingRouter from './routes/loggingRouter.js'
 
 const app = express()
 DbConnect()
@@ -20,6 +21,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.use('/',feedbackRouter)
+app.use('/api',loggingRouter)
 
 
 
