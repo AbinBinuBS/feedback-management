@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import feedbackRouter from './routes/feedbackRouter.js'
 import DbConnect from './config/db.js'
 import loggingRouter from './routes/loggingRouter.js'
+import trackAPI from './middileware/trackingMiddileware.js'
 
 const app = express()
 DbConnect()
@@ -15,7 +16,7 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"] 
 }));
-
+app.use(trackAPI);
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
