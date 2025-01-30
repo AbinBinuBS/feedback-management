@@ -14,7 +14,7 @@ const HomePage = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const { data } = await axios.get('http://localhost:3005/feedbacks');
+      const { data } = await axios.get('https://feedback-management-kynm.onrender.com/feedbacks');
       console.log(data.feedbacks);
       setFeedbackItems(data.feedbacks);
     } catch (error) {
@@ -39,7 +39,7 @@ const HomePage = () => {
 
   const handleFeedbackDelete = async (feedbackId) => {
     try {      
-      const {data} = await axios.delete(`http://localhost:3005/feedbacks/${feedbackId}`);
+      const {data} = await axios.delete(`https://feedback-management-kynm.onrender.com/feedbacks/${feedbackId}`);
       if(data.message == 'Success'){
         toast.success("Feedback removed Successfully.")
         setFeedbackItems(prevFeedbacks => 

@@ -72,7 +72,7 @@ const FeedbackModal = ({ isOpen, onClose, getAllData }) => {
         }
       });
       }
-      await axios.post('http://localhost:3005/feedbacks', formData, {
+      await axios.post('https://feedback-management-kynm.onrender.com/feedbacks', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       toast.success("Feedback added successfully..")

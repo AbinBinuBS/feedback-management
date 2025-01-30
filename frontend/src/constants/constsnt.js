@@ -36,3 +36,5 @@ export  const initialValues = {
     tags: [],
     attachments: []
   };
+
+  export const URL = 'https://feedback-management-kynm.onrender.com'

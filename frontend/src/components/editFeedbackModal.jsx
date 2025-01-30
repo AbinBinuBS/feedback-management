@@ -71,7 +71,7 @@ const EditFeedbackModal = ({ isOpen, onClose, onEditComplete, feedbackData }) =>
           formData.append('images', attachment.file);
         }
       });      
-      const response = await axios.put(`http://localhost:3005/feedbacks/${feedbackData._id}`, formData, {
+      const response = await axios.put(`https://feedback-management-kynm.onrender.com/feedbacks/${feedbackData._id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       console.log(response);
