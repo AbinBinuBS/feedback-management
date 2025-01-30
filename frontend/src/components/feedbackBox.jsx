@@ -65,22 +65,16 @@ const FeedbackCard = ({
               <div className="flex items-center gap-2 border border-green-500 text-green-500 px-3 py-1 rounded-lg">
                 <div className="w-5 h-5 rounded-full overflow-hidden">
                   <img
-                    src="/api/placeholder/20/20"
+                    src="/public/sample.jpg"
                     alt={user}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <span className="text-sm">{user}</span>
+                <span className="text-sm">Sanju samson</span>
               </div>
               <div className={`border border-${getStatusColor(status)}-500 text-${getStatusColor(status)}-500 px-3 py-1 rounded-lg text-sm`}>
                 {status || 'New'}
               </div>
-              {module && (
-                <div className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-sm ${getTagStyles(module)}`}>
-                  {getModuleIcon(module)}
-                  {module}
-                </div>
-              )}
               {tags.map((tag, index) => (
                 <div
                   key={index}

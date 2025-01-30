@@ -2,6 +2,7 @@
 import fs from 'fs';
 import cloudinary from '../config/cloudinary.js';
 import Feedback from '../model/feedbackModel.js';
+import Logging from '../model/loggingSchema.js';
 
 export const getAllFeedbacks = async (req, res) =>{
     try{
@@ -37,6 +38,11 @@ export const addPost = async (req, res) => {
             attachments: uploadedFiles,
         });
         await feedback.save();
+        await Logging.create({
+            action: "Feedback Created",
+            user: "abin",
+            metadata: { feedbackId: feedback._id, title:feedback.title, platform:req.body.platform }
+        });
         res.status(201).json({ message: 'Feedback submitted successfully', feedback });
     } catch (error) {
         console.error(error);
@@ -75,6 +81,11 @@ export const editPost = async (req, res) => {
         feedback.tags = tags ? JSON.parse(tags) : feedback.tags;
         feedback.attachments = updatedAttachments;
         await feedback.save();
+        await Logging.create({
+            action: "Feedback Edited",
+            user: "abin",
+            metadata: { feedbackId: feedback._id, title:feedback.title, platform:feedback.platform }
+        });
         res.status(200).json({ message: "Feedback updated successfully", feedback });
     } catch (error) {
         console.error(error);
@@ -87,6 +98,11 @@ export const deleteFeedbacks = async (req, res) => {
     try {
         const feedbackId = req.params.id;
         const feedback = await Feedback.findByIdAndDelete(feedbackId);
+        await Logging.create({
+            action: "Feedback deleted",
+            user: "abin",
+            metadata: { feedbackId: feedback._id, title:feedback.title, platform:feedback.platform }
+        });
         res.status(200).json({ message: "Success", feedback });
     } catch (error) {
         console.error(error);
