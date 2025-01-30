@@ -65,7 +65,7 @@ const FeedbackCard = ({
               <div className="flex items-center gap-2 border border-green-500 text-green-500 px-3 py-1 rounded-lg">
                 <div className="w-5 h-5 rounded-full overflow-hidden">
                   <img
-                    src="/public/sample.jpg"
+                    src="/sample.jpg"
                     alt={user}
                     className="w-full h-full object-cover"
                   />
